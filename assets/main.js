@@ -1,0 +1,4 @@
+const b=document.querySelector('.burger'),n=document.getElementById('nav');b.onclick=()=>{const o=n.classList.toggle('open');b.setAttribute('aria-expanded',o)};
+document.querySelectorAll('[data-n]').forEach(e=>{const t=+e.dataset.n,s=e.dataset.s||'';let c=0;const k=Math.ceil(t/50);const i=setInterval(()=>{c=Math.min(t,c+k);e.textContent=c.toLocaleString('en-IN')+s;if(c>=t)clearInterval(i)},30)});
+const f=document.getElementById('appt');if(f)f.onsubmit=e=>{e.preventDefault();const d=new FormData(f),m=f.querySelector('.msg');if(!d.get('name').trim()||!/^[0-9+ ]{10,15}$/.test(d.get('phone').trim())){m.textContent='Enter your name and a valid mobile number.';return}
+const t=`Appointment request for Dr. Santosh Yadav%0AName: ${d.get('name')}%0APhone: ${d.get('phone')}%0AConcern: ${d.get('concern')}%0ADate: ${d.get('date')||'Any'}%0ANotes: ${d.get('notes')||'-'}`;m.textContent='Opening WhatsApp...';window.open('https://wa.me/917219479090?text='+t,'_blank')};
